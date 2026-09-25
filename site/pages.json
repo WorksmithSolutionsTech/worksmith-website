@@ -1,0 +1,92 @@
+[
+  {
+    "n": 1,
+    "path": "/",
+    "label": "Home"
+  },
+  {
+    "n": 2,
+    "path": "/approach/",
+    "label": "Approach"
+  },
+  {
+    "n": 3,
+    "path": "/services/",
+    "label": "Services"
+  },
+  {
+    "n": 4,
+    "path": "/verticals/business-health-check/",
+    "label": "Vertical I: Business Health Check"
+  },
+  {
+    "n": 5,
+    "path": "/services/business-health-check/",
+    "label": "01 Business Health Check"
+  },
+  {
+    "n": 6,
+    "path": "/services/operational-intelligence-systems/",
+    "label": "02 Operational Intelligence Systems"
+  },
+  {
+    "n": 7,
+    "path": "/verticals/workflow-automation/",
+    "label": "Vertical II: Workflow Automation"
+  },
+  {
+    "n": 8,
+    "path": "/services/business-process-automation/",
+    "label": "03 Business Process Automation"
+  },
+  {
+    "n": 9,
+    "path": "/services/ai-agent-development/",
+    "label": "04 AI Agent Development"
+  },
+  {
+    "n": 10,
+    "path": "/services/whatsapp-communication-automation/",
+    "label": "05 WhatsApp & Communication Automation"
+  },
+  {
+    "n": 11,
+    "path": "/verticals/digital-foundation/",
+    "label": "Vertical III: Digital Foundation"
+  },
+  {
+    "n": 12,
+    "path": "/services/custom-software-crm-portals/",
+    "label": "06 Custom Software, CRM & Portals"
+  },
+  {
+    "n": 13,
+    "path": "/services/mobile-applications/",
+    "label": "07 Mobile Applications"
+  },
+  {
+    "n": 14,
+    "path": "/services/growth-analytics-infrastructure/",
+    "label": "08 Growth & Analytics Infrastructure"
+  },
+  {
+    "n": 15,
+    "path": "/how-we-work/",
+    "label": "How we work"
+  },
+  {
+    "n": 16,
+    "path": "/pricing/",
+    "label": "Pricing"
+  },
+  {
+    "n": 17,
+    "path": "/data-and-limits/",
+    "label": "Data & limits"
+  },
+  {
+    "n": 18,
+    "path": "/contact/",
+    "label": "Contact"
+  }
+]

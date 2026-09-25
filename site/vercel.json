@@ -1,0 +1,338 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.worksmith.tech"
+        }
+      ],
+      "destination": "https://worksmith.tech/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/diagnostic",
+      "destination": "/services/business-health-check/",
+      "permanent": true
+    },
+    {
+      "source": "/diagnostic/",
+      "destination": "/services/business-health-check/",
+      "permanent": true
+    },
+    {
+      "source": "/health-check",
+      "destination": "/services/business-health-check/",
+      "permanent": true
+    },
+    {
+      "source": "/health-check/",
+      "destination": "/services/business-health-check/",
+      "permanent": true
+    },
+    {
+      "source": "/intelligence",
+      "destination": "/services/operational-intelligence-systems/",
+      "permanent": true
+    },
+    {
+      "source": "/intelligence/",
+      "destination": "/services/operational-intelligence-systems/",
+      "permanent": true
+    },
+    {
+      "source": "/automation",
+      "destination": "/verticals/workflow-automation/",
+      "permanent": true
+    },
+    {
+      "source": "/automation/",
+      "destination": "/verticals/workflow-automation/",
+      "permanent": true
+    },
+    {
+      "source": "/agents",
+      "destination": "/services/ai-agent-development/",
+      "permanent": true
+    },
+    {
+      "source": "/agents/",
+      "destination": "/services/ai-agent-development/",
+      "permanent": true
+    },
+    {
+      "source": "/whatsapp",
+      "destination": "/services/whatsapp-communication-automation/",
+      "permanent": true
+    },
+    {
+      "source": "/whatsapp/",
+      "destination": "/services/whatsapp-communication-automation/",
+      "permanent": true
+    },
+    {
+      "source": "/foundation",
+      "destination": "/verticals/digital-foundation/",
+      "permanent": true
+    },
+    {
+      "source": "/foundation/",
+      "destination": "/verticals/digital-foundation/",
+      "permanent": true
+    },
+    {
+      "source": "/crm",
+      "destination": "/services/custom-software-crm-portals/",
+      "permanent": true
+    },
+    {
+      "source": "/crm/",
+      "destination": "/services/custom-software-crm-portals/",
+      "permanent": true
+    },
+    {
+      "source": "/apps",
+      "destination": "/services/mobile-applications/",
+      "permanent": true
+    },
+    {
+      "source": "/apps/",
+      "destination": "/services/mobile-applications/",
+      "permanent": true
+    },
+    {
+      "source": "/analytics",
+      "destination": "/services/growth-analytics-infrastructure/",
+      "permanent": true
+    },
+    {
+      "source": "/analytics/",
+      "destination": "/services/growth-analytics-infrastructure/",
+      "permanent": true
+    },
+    {
+      "source": "/book",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/book/",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/scoping",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/scoping/",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/start",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/start/",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/approach/",
+      "permanent": true
+    },
+    {
+      "source": "/about/",
+      "destination": "/approach/",
+      "permanent": true
+    },
+    {
+      "source": "/about-us",
+      "destination": "/approach/",
+      "permanent": true
+    },
+    {
+      "source": "/about-us/",
+      "destination": "/approach/",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us/",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/method",
+      "destination": "/how-we-work/",
+      "permanent": true
+    },
+    {
+      "source": "/method/",
+      "destination": "/how-we-work/",
+      "permanent": true
+    },
+    {
+      "source": "/process",
+      "destination": "/how-we-work/",
+      "permanent": true
+    },
+    {
+      "source": "/process/",
+      "destination": "/how-we-work/",
+      "permanent": true
+    },
+    {
+      "source": "/fees",
+      "destination": "/pricing/",
+      "permanent": true
+    },
+    {
+      "source": "/fees/",
+      "destination": "/pricing/",
+      "permanent": true
+    },
+    {
+      "source": "/security",
+      "destination": "/data-and-limits/",
+      "permanent": true
+    },
+    {
+      "source": "/security/",
+      "destination": "/data-and-limits/",
+      "permanent": true
+    },
+    {
+      "source": "/verticals",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/verticals/",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy/",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy/",
+      "destination": "/privacy/",
+      "permanent": true
+    },
+    {
+      "source": "/terms-of-use",
+      "destination": "/terms/",
+      "permanent": true
+    },
+    {
+      "source": "/terms-of-use/",
+      "destination": "/terms/",
+      "permanent": true
+    },
+    {
+      "source": "/terms-and-conditions",
+      "destination": "/terms/",
+      "permanent": true
+    },
+    {
+      "source": "/terms-and-conditions/",
+      "destination": "/terms/",
+      "permanent": true
+    },
+    {
+      "source": "/tos",
+      "destination": "/terms/",
+      "permanent": true
+    },
+    {
+      "source": "/tos/",
+      "destination": "/terms/",
+      "permanent": true
+    },
+    {
+      "source": "/legal",
+      "destination": "/privacy/",
+      "permanent": true
+    },
+    {
+      "source": "/legal/",
+      "destination": "/privacy/",
+      "permanent": true
+    },
+    {
+      "source": "/about.html",
+      "destination": "/approach/",
+      "permanent": true
+    },
+    {
+      "source": "/about.html/",
+      "destination": "/approach/",
+      "permanent": true
+    },
+    {
+      "source": "/services.html",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/services.html/",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html/",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/pricing.html",
+      "destination": "/pricing/",
+      "permanent": true
+    },
+    {
+      "source": "/pricing.html/",
+      "destination": "/pricing/",
+      "permanent": true
+    },
+    {
+      "source": "/services/ca-workflow-automation",
+      "destination": "/verticals/workflow-automation/",
+      "permanent": true
+    },
+    {
+      "source": "/services/ca-workflow-automation/",
+      "destination": "/verticals/workflow-automation/",
+      "permanent": true
+    },
+    {
+      "source": "/ca-workflow-automation",
+      "destination": "/verticals/workflow-automation/",
+      "permanent": true
+    },
+    {
+      "source": "/ca-workflow-automation/",
+      "destination": "/verticals/workflow-automation/",
+      "permanent": true
+    }
+  ]
+}
