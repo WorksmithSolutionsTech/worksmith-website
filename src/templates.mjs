@@ -261,6 +261,7 @@ ${chrome()}
 <main id="main">
 ${body}
 </main>
+${prevNext ? pager(rel, seq, page.key) : ''}
 ${footer(rel)}
 <script src="${rel}assets/js/app.js" defer></script>
 </body>
@@ -446,7 +447,7 @@ export function renderHome(rel) {
   return `
   <nav class="scrub" aria-label="Figure chapters">
     <ol>
-      ${[['top', 'Systems'], ['approach', 'The leak'], ['find', 'Find it'], ['carry', 'Carry it'], ['ground', 'Ground it'], ['order', 'The order']].map(([id, label], n) => `<li><a href="#${id}" data-stage-link="${n}" aria-label="${label}"></a></li>`).join('')}
+      ${[['top', 'Systems'], ['approach', 'The leak'], ['find', 'Find it'], ['carry', 'Carry it'], ['ground', 'Ground it'], ['order', 'The order'], ['contact', 'Scoping']].map(([id, label], n) => `<li><a href="#${id}" data-stage-link="${n}"><em>${label}</em></a></li>`).join('')}
     </ol>
   </nav>
   <section class="hero dark" id="top" data-stage="0" data-canvas data-tone="dark">
@@ -497,6 +498,7 @@ ${verticalSections}
       ${honestNote()}
     </div>
   </section>
+${contactSection(rel)}
 `;
 }
 

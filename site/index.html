@@ -116,7 +116,7 @@
 
   <nav class="scrub" aria-label="Figure chapters">
     <ol>
-      <li><a href="#top" data-stage-link="0" aria-label="Systems"></a></li><li><a href="#approach" data-stage-link="1" aria-label="The leak"></a></li><li><a href="#find" data-stage-link="2" aria-label="Find it"></a></li><li><a href="#carry" data-stage-link="3" aria-label="Carry it"></a></li><li><a href="#ground" data-stage-link="4" aria-label="Ground it"></a></li><li><a href="#order" data-stage-link="5" aria-label="The order"></a></li>
+      <li><a href="#top" data-stage-link="0"><em>Systems</em></a></li><li><a href="#approach" data-stage-link="1"><em>The leak</em></a></li><li><a href="#find" data-stage-link="2"><em>Find it</em></a></li><li><a href="#carry" data-stage-link="3"><em>Carry it</em></a></li><li><a href="#ground" data-stage-link="4"><em>Ground it</em></a></li><li><a href="#order" data-stage-link="5"><em>The order</em></a></li><li><a href="#contact" data-stage-link="6"><em>Scoping</em></a></li>
     </ol>
   </nav>
   <section class="hero dark" id="top" data-stage="0" data-canvas data-tone="dark">
@@ -208,8 +208,77 @@
       <p class="note"><strong>The honest version:</strong> A business that buys Vertical II without Vertical III in place is paying us to automate against data that is not being captured reliably. We will tell you that at the diagnostic stage rather than at the go-live.</p>
     </div>
   </section>
+<section class="contact dark" id="contact" data-stage="6" data-canvas data-no-hud data-tone="dark">
+    
+    <div class="wrap contact-grid">
+      <div class="contact-copy">
+        <p class="eyebrow">Phase 00 <span class="mono">Scoping conversation · no charge</span></p>
+        <h2 class="display-2">Start with the scoping conversation.</h2>
+        <p class="lede">It costs nothing, and it may end with us telling you there is nothing here. If there is, you will have a fixed-fee, time-boxed diagnostic and a findings register in your own numbers before any larger decision is put in front of you.</p>
+        <dl class="people">
+          <div><dt>Email</dt><dd><a href="mailto:contact@worksmith.tech">contact@worksmith.tech</a></dd></div>
+          <div><dt>Web</dt><dd>worksmith.tech</dd></div>
+        </dl>
+        
+      </div>
+
+      <form class="brief" data-brief data-to="contact@worksmith.tech" data-endpoint="" novalidate>
+        <div class="brief-head"><p>Scoping request</p><span>Phase 00 · no charge</span></div>
+        <div class="row2">
+          <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" placeholder="Full name" required></div>
+          <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" type="text" autocomplete="organization" placeholder="Company name"></div>
+        </div>
+        <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="name@company.com" required></div>
+        <div class="field"><label for="f-msg">Your thoughts</label><textarea id="f-msg" name="message" rows="3" placeholder="Share any details, context, or questions..."></textarea></div>
+        <div class="consent">
+          <label for="f-consent"><input id="f-consent" name="consent" type="checkbox" value="yes" required><span>I agree that Worksmith may use these details to reply to this enquiry.</span></label>
+          <details class="notice">
+            <summary>What we collect and why</summary>
+            <p>We ask for your name, company, work email and message only to reply to this enquiry and to judge whether we can help. Please do not send financial records, ledgers or client data here. You can withdraw consent, or ask to see, correct or erase these details, by writing to <a href="mailto:contact@worksmith.tech">contact@worksmith.tech</a>. Details: <a href="privacy/">Privacy Policy</a>.</p>
+          </details>
+        </div>
+        <button class="btn btn-ember" type="submit">Compose email to Worksmith <span class="arr" aria-hidden="true">→</span></button>
+        <p class="status" data-status role="status" aria-live="polite">Opens your email app with this request filled in, addressed to contact@worksmith.tech. We ask for no data at this stage.</p>
+      </form>
+    </div>
+  </section>
 
 </main>
+<nav class="pager" aria-label="Page forwarding" data-tone="paper">
+  <div class="wrap">
+    <div class="rail"><div class="rail-group is-here" style="--n:3">
+        <span class="rail-label mono">Start</span>
+        <div class="rail-ticks">
+          <a href="./" class="is-now" data-label="01 · Home" aria-label="Page 1: Home" aria-current="page"></a><a href="approach/" class="" data-label="02 · Approach" aria-label="Page 2: Approach"></a><a href="services/" class="" data-label="03 · Services" aria-label="Page 3: Services"></a>
+        </div>
+      </div><div class="rail-group" style="--n:3">
+        <span class="rail-label mono">I · Find it</span>
+        <div class="rail-ticks">
+          <a href="verticals/business-health-check/" class="" data-label="04 · Vertical I: Business Health Check" aria-label="Page 4: Vertical I: Business Health Check"></a><a href="services/business-health-check/" class="" data-label="05 · 01 Business Health Check" aria-label="Page 5: 01 Business Health Check"></a><a href="services/operational-intelligence-systems/" class="" data-label="06 · 02 Operational Intelligence Systems" aria-label="Page 6: 02 Operational Intelligence Systems"></a>
+        </div>
+      </div><div class="rail-group" style="--n:4">
+        <span class="rail-label mono">II · Carry it</span>
+        <div class="rail-ticks">
+          <a href="verticals/workflow-automation/" class="" data-label="07 · Vertical II: Workflow Automation" aria-label="Page 7: Vertical II: Workflow Automation"></a><a href="services/business-process-automation/" class="" data-label="08 · 03 Business Process Automation" aria-label="Page 8: 03 Business Process Automation"></a><a href="services/ai-agent-development/" class="" data-label="09 · 04 AI Agent Development" aria-label="Page 9: 04 AI Agent Development"></a><a href="services/whatsapp-communication-automation/" class="" data-label="10 · 05 WhatsApp &amp; Communication Automation" aria-label="Page 10: 05 WhatsApp &amp; Communication Automation"></a>
+        </div>
+      </div><div class="rail-group" style="--n:4">
+        <span class="rail-label mono">III · Ground it</span>
+        <div class="rail-ticks">
+          <a href="verticals/digital-foundation/" class="" data-label="11 · Vertical III: Digital Foundation" aria-label="Page 11: Vertical III: Digital Foundation"></a><a href="services/custom-software-crm-portals/" class="" data-label="12 · 06 Custom Software, CRM &amp; Portals" aria-label="Page 12: 06 Custom Software, CRM &amp; Portals"></a><a href="services/mobile-applications/" class="" data-label="13 · 07 Mobile Applications" aria-label="Page 13: 07 Mobile Applications"></a><a href="services/growth-analytics-infrastructure/" class="" data-label="14 · 08 Growth &amp; Analytics Infrastructure" aria-label="Page 14: 08 Growth &amp; Analytics Infrastructure"></a>
+        </div>
+      </div><div class="rail-group" style="--n:4">
+        <span class="rail-label mono">Method & terms</span>
+        <div class="rail-ticks">
+          <a href="how-we-work/" class="" data-label="15 · How we work" aria-label="Page 15: How we work"></a><a href="pricing/" class="" data-label="16 · Pricing" aria-label="Page 16: Pricing"></a><a href="data-and-limits/" class="" data-label="17 · Data &amp; limits" aria-label="Page 17: Data &amp; limits"></a><a href="contact/" class="" data-label="18 · Contact" aria-label="Page 18: Contact"></a>
+        </div>
+      </div></div>
+    <div class="pager-meta mono"><span>Page 01 of 18 · Home</span><span class="keys" aria-hidden="true"><kbd>←</kbd><kbd>→</kbd> turn pages</span></div>
+    <div class="pager-grid is-single"><a class="pager-cell pager-next spot" href="approach/" rel="next">
+        <span class="mono">Next · 02 / 18</span>
+        <span class="pager-title"><span>Approach</span><span class="arr" aria-hidden="true">→</span></span>
+      </a></div>
+  </div>
+</nav>
 <footer class="footer" data-tone="ink">
   <div class="wrap">
     <div class="foot-grid">

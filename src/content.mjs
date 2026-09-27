@@ -81,6 +81,7 @@ export const honestVersion =
 export const services = [
   {
     id: 'business-health-check',
+    caption: 'Vertical I — eight loss domains, each finding put on record.',
     n: '01',
     vertical: 'business-health-check',
     title: 'Business Health Check',
@@ -118,6 +119,7 @@ export const services = [
   },
   {
     id: 'operational-intelligence-systems',
+    caption: 'Vertical I — the same gaps, raised as they form.',
     n: '02',
     vertical: 'business-health-check',
     title: 'Operational Intelligence Systems',

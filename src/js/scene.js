@@ -372,7 +372,7 @@ void main(){
   if (any(isnan(b)) || any(isinf(b))) b = vec3(0.0);
   c += b * uBloom;
   vec2 q = vUv - uCenter; q.x *= uRes.x / uRes.y;
-  c *= mix(0.66, 1.0, 1.0 - smoothstep(0.3, 1.35, length(q)));
+  c *= mix(0.78, 1.0, 1.0 - smoothstep(0.3, 1.35, length(q)));
   vec3 over = max(c - 0.8, 0.0);
   c = min(c, vec3(0.8)) + over / (1.0 + over * 2.4);
   vec2 fc = gl_FragCoord.xy + fract(uTime) * 91.0;
@@ -1332,7 +1332,7 @@ void main(){
       bindTex(0, post.scene.tex, u.uScene);
       bindTex(1, post.h1.tex, u.uB1);
       bindTex(2, post.q1.tex, u.uB2);
-      gl.uniform1f(u.uBloom, 0.5 + st.find * 0.3 + st.carry * 0.05);
+      gl.uniform1f(u.uBloom, 0.64 + st.find * 0.3 + st.carry * 0.05);
       gl.uniform2f(u.uRes, W, H);
       gl.uniform2f(u.uCenter, isSmall() ? 0.5 : 0.5 + st.dx * 0.5, 0.48);
       gl.uniform1f(u.uTime, time);
