@@ -884,7 +884,7 @@ a.pager-prev:hover .arr { transform: translateX(-6px); }
   .device { max-width: 320px; }
   .rail-label { font-size: 9px; }
 }
-/* phone + tablet: the figure shows only in the empty gaps; text sits on a solid plate */
+/* phone + tablet: a light veil behind the copy so the figure shows through a little, and the words stay in front */
 @media (max-width: 1060px) {
   html:not(.no-webgl) .shade { background: none; }
   .hero > .wrap,
@@ -892,9 +892,9 @@ a.pager-prev:hover .arr { transform: translateX(-6px); }
   .order > .wrap,
   .contact > .wrap,
   .page-hero > .wrap {
-    background: #171412;
+    background: rgba(23, 20, 18, 0.58);
   }
-  .v-sticky { position: relative; background: #171412; }
+  .v-sticky { position: relative; background: transparent; }
   .v-sticky::before {
     content: "";
     position: absolute;
@@ -903,7 +903,7 @@ a.pager-prev:hover .arr { transform: translateX(-6px); }
     width: 100vw;
     top: 0;
     bottom: 0;
-    background: #171412;
+    background: rgba(23, 20, 18, 0.58);
     pointer-events: none;
   }
   .v-sticky > * { position: relative; z-index: 1; }
