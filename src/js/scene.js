@@ -1361,28 +1361,31 @@ void main(){
     const cw = canvas.clientWidth, ch = canvas.clientHeight;
     if (tags.length) {
       const show = st.find > 0.02 && intro > 0.8;
-      const small = isSmall();
+      const narrow = window.innerWidth < 1060;
       const nTags = Math.min(tags.length, GAPS.length);
-      const cycle = small ? ((time / 3.8) % nTags + nTags) % nTags : 0;
-      const active = Math.floor(cycle);
-      const frac = cycle - active;
-      const fade = frac < 0.18 ? frac / 0.18 : frac > 0.82 ? (1 - frac) / 0.18 : 1;
       for (let k = 0; k < nTags; k++) {
         const el = tags[k];
         let op = 0;
-        if (show && small) {
-          if (k === active) {
-            el.style.transform = `translate3d(${(cw * 0.5).toFixed(1)}px, ${(ch * 0.4).toFixed(1)}px, 0)`;
-            op = smooth(0.55, 0.95, st.find) * fade;
-          }
-        } else if (show) {
+        if (show) {
           const s = project(gapPts[k]);
           if (s) {
-            const edge = smooth(cw * 0.44, cw * 0.52, s[0]) * (1 - smooth(cw - 40, cw, s[0] + 180)) * smooth(90, 160, s[1]);
+            let x = s[0], y = s[1];
+            if (narrow) {
+              const ox = x - cw * 0.5, oy = y - ch * 0.46;
+              const len = Math.hypot(ox, oy) || 1;
+              const reach = Math.max(len, Math.min(cw, ch) * 0.34);
+              x = cw * 0.5 + (ox / len) * reach;
+              y = ch * 0.46 + (oy / len) * reach * 0.72;
+            }
+            // desktop keeps labels out of the left text column; a narrow screen has no column, so only the viewport edges fade
+            const edge = narrow
+              ? smooth(4, 16, s[0]) * (1 - smooth(cw - 16, cw - 4, s[0])) * smooth(56, 100, s[1]) * (1 - smooth(ch - 56, ch - 16, s[1]))
+              : smooth(cw * 0.44, cw * 0.52, s[0]) * (1 - smooth(cw - 40, cw, s[0] + 180)) * smooth(90, 160, s[1]);
             op = smooth(0.55, 0.95, st.find) * edge;
-            el.style.transform = `translate3d(${s[0].toFixed(1)}px, ${s[1].toFixed(1)}px, 0)`;
+            el.classList.toggle('is-flip', narrow && x > cw * 0.56);
+            el.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`;
           }
-        }
+        } else el.classList.remove('is-flip');
         if (Math.abs(op - tagState[k].o) > 0.01) { el.style.opacity = op.toFixed(3); tagState[k].o = op; }
       }
     }
