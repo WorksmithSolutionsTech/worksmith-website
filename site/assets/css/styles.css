@@ -924,6 +924,13 @@ a.pager-prev:hover .arr { transform: translateX(-6px); }
     margin-top: 32vh;
     padding-block: 0;
   }
+  /* the findings ring is taller than the other gap views */
+  .pg-home #find {
+    margin-top: 52vh;
+  }
+  .pg-home #carry {
+    margin-top: 46vh;
+  }
   .pg-home .order {
     margin-top: 0;
     padding-block: 0;

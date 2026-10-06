@@ -1029,9 +1029,17 @@ void main(){
     const tg = st.tgt.slice();
     let ex = st.eye[0] - tg[0], ey = st.eye[1] - tg[1], ez = st.eye[2] - tg[2];
     const push = 1 + (1 - easeOut(intro)) * 0.28 + (1 - easeOut(settle)) * 0.045;
-    // narrow screens: sit further back so the figure fits the gap with space on both sides
+    // Phone and tablet: pull the camera so the stacks span about 95% of the width.
+    // Each stage sits at a different distance, so the factor is keyed to the stage.
+    const FIT_K = [0.67, 0.888, 0.947, 0.752, 1.269, 0.876, 0.807];
     const aspect = window.innerWidth / Math.max(1, window.innerHeight);
-    const fit = small ? Math.min(3.1, Math.max(1.6, 1.35 / aspect)) : 1;
+    let fit = 1;
+    if (window.innerWidth < 1060) {
+      const i = clamp(Math.floor(stage), 0, FIT_K.length - 1);
+      const f = clamp(stage - i, 0, 1);
+      const k = FIT_K[i] + (FIT_K[Math.min(i + 1, FIT_K.length - 1)] - FIT_K[i]) * f;
+      fit = clamp(k / aspect, 0.45, 3.4);
+    }
     const zoom = fit * push;
     viewZoom = zoom;
     ex *= zoom; ey *= zoom; ez *= zoom;
