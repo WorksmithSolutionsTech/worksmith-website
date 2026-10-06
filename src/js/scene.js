@@ -1352,14 +1352,17 @@ void main(){
   function placeOverlays(st) {
     const cw = canvas.clientWidth, ch = canvas.clientHeight;
     if (tags.length) {
-      const show = st.find > 0.02 && !isSmall() && intro > 0.8;
+      const show = st.find > 0.02 && intro > 0.8;
+      const small = isSmall();
       for (let k = 0; k < tags.length && k < GAPS.length; k++) {
         const el = tags[k];
         let op = 0;
         if (show) {
           const s = project(gapPts[k]);
           if (s) {
-            const edge = smooth(cw * 0.44, cw * 0.52, s[0]) * (1 - smooth(cw - 40, cw, s[0] + 180)) * smooth(90, 160, s[1]);
+            const edge = small
+              ? smooth(12, 36, s[0]) * (1 - smooth(cw - 36, cw - 12, s[0])) * smooth(72, 120, s[1])
+              : smooth(cw * 0.44, cw * 0.52, s[0]) * (1 - smooth(cw - 40, cw, s[0] + 180)) * smooth(90, 160, s[1]);
             op = smooth(0.55, 0.95, st.find) * edge;
             el.style.transform = `translate3d(${s[0].toFixed(1)}px, ${s[1].toFixed(1)}px, 0)`;
           }
@@ -1368,14 +1371,18 @@ void main(){
       }
     }
     // system name tags ride above each stack
-    const showNames = running && !isSmall() && intro > 0.9 ? (1 - smooth(0.15, 0.6, st.find)) : 0;
+    const showNames = running && intro > 0.9 ? (1 - smooth(0.15, 0.6, st.find)) : 0;
+    const smallNames = isSmall();
     for (let i = 0; i < tagEls.length; i++) {
       let op = 0;
       if (showNames > 0) {
         const c = cur[i];
         const s = project([c.p[0], c.top + 0.05, c.p[2]]);
         if (s) {
-          op = showNames * (1 - c.hov) * smooth(cw * 0.46, cw * 0.54, s[0]) * (1 - smooth(cw - 30, cw, s[0] + 60)) * smooth(96, 150, s[1]) * (1 - smooth(ch - 90, ch - 40, s[1]));
+          const side = smallNames
+            ? smooth(8, 24, s[0]) * (1 - smooth(cw - 24, cw - 8, s[0]))
+            : smooth(cw * 0.46, cw * 0.54, s[0]) * (1 - smooth(cw - 30, cw, s[0] + 60));
+          op = showNames * (1 - c.hov) * side * smooth(96, 150, s[1]) * (1 - smooth(ch - 90, ch - 40, s[1]));
           if (op > 0.01) tagEls[i].style.transform = `translate3d(${s[0].toFixed(1)}px, ${s[1].toFixed(1)}px, 0)`;
         }
       }

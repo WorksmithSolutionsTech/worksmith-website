@@ -269,7 +269,12 @@ main { position: relative; z-index: 2; overflow-x: clip; }
 .tag-in b { font-family: var(--f-mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ember); }
 .tag-in span { font-size: 15px; font-weight: 400; color: var(--text-d); }
 .tag-in small { font-family: var(--f-mono); font-size: 10.5px; color: var(--ash); }
-@media (max-width: 860px) { .hud, .findings { display: none; } }
+@media (max-width: 860px) {
+  .hud { z-index: 1; left: var(--gutter); right: var(--gutter); max-width: none; justify-items: start; bottom: 16px; }
+  .fig { text-align: left; font-size: 11px; }
+  .legend { justify-content: flex-start; font-size: 10px; gap: 4px 12px; }
+  .legend-note { padding-left: 12px; }
+}
 
 /* ---------- home: hero ---------- */
 .hero {
@@ -1187,5 +1192,7 @@ a.pager-prev:hover .arr { transform: translateX(-6px); }
 .sys-tag span { position: absolute; left: 0; bottom: 10px; transform: translateX(-50%); display: flex; align-items: baseline; gap: 7px; padding: 4px 8px 4px 7px; white-space: nowrap; font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-d); background: rgba(17, 15, 13, 0.55); border: 1px solid rgba(243, 238, 230, 0.14); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
 .sys-tag b { font-weight: 400; color: var(--ember); }
 .sys-tag span::after { content: ""; position: absolute; left: 50%; top: 100%; width: 1px; height: 10px; background: linear-gradient(rgba(243, 238, 230, 0.35), rgba(243, 238, 230, 0)); }
-@media (max-width: 859px) { .sys-tags { display: none; } }
+@media (max-width: 860px) {
+  .sys-tag span { font-size: 9px; letter-spacing: 0.04em; gap: 5px; padding: 3px 6px 3px 5px; }
+}
 @media print { .sys-tags { display: none !important; } }
