@@ -920,9 +920,12 @@ a.pager-prev:hover .arr { transform: translateX(-6px); }
     padding-top: calc(var(--nav-h) + 20px);
   }
   .pg-home .approach,
-  .pg-home .vertical,
-  .pg-home .order {
+  .pg-home .vertical {
     margin-top: 32vh;
+    padding-block: 0;
+  }
+  .pg-home .order {
+    margin-top: 0;
     padding-block: 0;
   }
   .page-hero,
