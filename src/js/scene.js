@@ -167,9 +167,9 @@ void main(){
   float fres = pow(1.0 - ndv, 3.0);
   float diff = clamp(dot(n, L), 0.0, 1.0);
   float spec = pow(clamp(dot(n, H), 0.0, 1.0), 90.0);
-  vec3 col = vec3(0.13, 0.118, 0.108) * (0.6 + 0.4 * diff) + vec3(0.055, 0.05, 0.044) * max(n.y, 0.0);
-  float a = 0.62 + 0.3 * fres;
-  col += uCream * (fres * 0.42 + spec * 0.7);
+  vec3 col = vec3(0.34, 0.31, 0.28) * (0.82 + 0.4 * diff) + vec3(0.12, 0.11, 0.09) * max(n.y, 0.0);
+  float a = 0.72 + 0.26 * fres;
+  col += uCream * (fres * 0.72 + spec * 0.95);
   if (vLN.y > 0.5) {
     vec2 p = vL.xz + 0.5;
     float inside = band(0.07, 0.93, p.x) * band(0.1, 0.9, p.y);
@@ -185,7 +185,7 @@ void main(){
     float cells = max(max(idc * 0.85, f1 * 0.5), f2 * 0.8) * row * inside;
     float bad = step(0.7, hash(ri * 5.3 + uSeed * 11.0)) * uBad;
     vec3 ink = mix(uCream, uEmber * 1.7, clamp(bad * f1 * 2.0, 0.0, 1.0));
-    col += ink * cells * uLevel * (0.55 + 0.9 * uGlow);
+    col += ink * cells * uLevel * (0.9 + 1.2 * uGlow);
     a = max(a, cells * uLevel * 0.95);
     float rule = band(0.074, 0.086, p.y) * band(0.07, 0.93, p.x);
     col += uCream * rule * 0.6 * uLevel;
@@ -368,13 +368,14 @@ void main(){
   vec3 c = texture(uScene, vUv).rgb;
   if (any(isnan(c)) || any(isinf(c))) c = vec3(0.09, 0.078, 0.07);
   c = clamp(c, 0.0, 8.0);
+  c *= 2.35;
   vec3 b = texture(uB1, vUv).rgb * 0.85 + texture(uB2, vUv).rgb * 1.1;
   if (any(isnan(b)) || any(isinf(b))) b = vec3(0.0);
   c += b * uBloom;
   vec2 q = vUv - uCenter; q.x *= uRes.x / uRes.y;
-  c *= mix(0.66, 1.0, 1.0 - smoothstep(0.3, 1.35, length(q)));
-  vec3 over = max(c - 0.8, 0.0);
-  c = min(c, vec3(0.8)) + over / (1.0 + over * 2.4);
+  c *= mix(0.96, 1.0, 1.0 - smoothstep(0.6, 1.6, length(q)));
+  vec3 over = max(c - 1.2, 0.0);
+  c = min(c, vec3(1.2)) + over / (1.0 + over * 1.4);
   vec2 fc = gl_FragCoord.xy + fract(uTime) * 91.0;
   float n1 = fract(sin(dot(fc, vec2(12.9898, 78.233))) * 43758.5453);
   float n2 = fract(sin(dot(fc, vec2(39.3468, 11.1354))) * 24634.6345);
@@ -788,6 +789,7 @@ void main(){
   /* ---------- camera + state ---------- */
   const proj = mat(), view = mat(), model = mat();
   let stage = 0, time = 0, last = 0, frameNo = 0, agentPhase = 0;
+  let viewZoom = 1;
   let intro = reduceMq.matches || !entrance ? 1 : 0, introDur = 2.6, warming = false;
   let settle = reduceMq.matches ? 1 : 0;           // gentle camera settle on every page
   let handoff = null;                              // camera carried over from the previous page
@@ -1027,7 +1029,11 @@ void main(){
     const tg = st.tgt.slice();
     let ex = st.eye[0] - tg[0], ey = st.eye[1] - tg[1], ez = st.eye[2] - tg[2];
     const push = 1 + (1 - easeOut(intro)) * 0.28 + (1 - easeOut(settle)) * 0.045;
-    const zoom = (small ? 1.4 : 1) * push;
+    // narrow screens: sit further back so the figure fits the gap with space on both sides
+    const aspect = window.innerWidth / Math.max(1, window.innerHeight);
+    const fit = small ? Math.min(3.1, Math.max(1.6, 1.35 / aspect)) : 1;
+    const zoom = fit * push;
+    viewZoom = zoom;
     ex *= zoom; ey *= zoom; ez *= zoom;
     const ang = rm ? 0 : Math.sin(time * 0.07) * 0.07 + pointer.sx * 0.05 + (1 - easeOut(intro)) * 0.35 + (1 - easeOut(settle)) * 0.05;
     const ca = Math.cos(ang), sa = Math.sin(ang);
@@ -1050,7 +1056,7 @@ void main(){
     if (prog.u.uProj) gl.uniformMatrix4fv(prog.u.uProj, false, proj);
     if (prog.u.uView) gl.uniformMatrix4fv(prog.u.uView, false, view);
     if (prog.u.uFog) gl.uniform3fv(prog.u.uFog, C.bg);
-    if (prog.u.uFogRange) gl.uniform2f(prog.u.uFogRange, 17, 54);
+    if (prog.u.uFogRange) gl.uniform2f(prog.u.uFogRange, 17 * viewZoom, 54 * viewZoom);
     if (prog.u.uEmber) gl.uniform3fv(prog.u.uEmber, C.ember);
   }
   function lineUniforms(color, alpha, dash, ends, draw, sweepAmt) {
@@ -1317,7 +1323,7 @@ void main(){
     gl.disable(gl.DEPTH_TEST);
     gl.disable(gl.BLEND);
     // 2 · bright pass → half, blur; → eighth, blur
-    const thresh = post.hdr ? 0.97 : 0.86;
+    const thresh = post.hdr ? 0.58 : 0.46;
     fsPass(post.bright, post.h1, (u) => { bindTex(0, post.scene.tex, u.uTex); gl.uniform2f(u.uTexel, 1 / W, 1 / H); gl.uniform1f(u.uThresh, thresh); });
     fsPass(post.blur, post.h2, (u) => { bindTex(0, post.h1.tex, u.uTex); gl.uniform2f(u.uDir, 1 / post.h1.w, 0); });
     fsPass(post.blur, post.h1, (u) => { bindTex(0, post.h2.tex, u.uTex); gl.uniform2f(u.uDir, 0, 1 / post.h1.h); });
@@ -1332,7 +1338,7 @@ void main(){
       bindTex(0, post.scene.tex, u.uScene);
       bindTex(1, post.h1.tex, u.uB1);
       bindTex(2, post.q1.tex, u.uB2);
-      gl.uniform1f(u.uBloom, 0.5 + st.find * 0.3 + st.carry * 0.05);
+      gl.uniform1f(u.uBloom, 1.85 + st.find * 0.45 + st.carry * 0.12);
       gl.uniform2f(u.uRes, W, H);
       gl.uniform2f(u.uCenter, isSmall() ? 0.5 : 0.5 + st.dx * 0.5, 0.48);
       gl.uniform1f(u.uTime, time);
