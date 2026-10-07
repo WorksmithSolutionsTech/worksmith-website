@@ -886,9 +886,25 @@ a.pager-prev:hover .arr { transform: translateX(-6px); }
   .order > .wrap,
   .contact > .wrap,
   .page-hero > .wrap {
+    position: relative;
     background: rgba(23, 20, 18, 0.9);
     -webkit-backdrop-filter: grayscale(1) brightness(3.96);
     backdrop-filter: grayscale(1) brightness(3.96);
+  }
+  .hero > .wrap::after,
+  .approach > .wrap::after,
+  .order > .wrap::after,
+  .contact > .wrap::after,
+  .page-hero > .wrap::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 4px;
+    background: #171412;
+    z-index: 2;
+    pointer-events: none;
   }
   .v-sticky { position: relative; background: transparent; }
   .v-sticky::before {
@@ -902,6 +918,7 @@ a.pager-prev:hover .arr { transform: translateX(-6px); }
     background: rgba(23, 20, 18, 0.9);
     -webkit-backdrop-filter: grayscale(1) brightness(3.96);
     backdrop-filter: grayscale(1) brightness(3.96);
+    box-shadow: inset 0 -3px 0 #171412, 0 2px 0 #171412;
     pointer-events: none;
   }
   .v-sticky > * { position: relative; z-index: 1; }
