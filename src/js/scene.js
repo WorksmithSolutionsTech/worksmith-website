@@ -167,9 +167,9 @@ void main(){
   float fres = pow(1.0 - ndv, 3.0);
   float diff = clamp(dot(n, L), 0.0, 1.0);
   float spec = pow(clamp(dot(n, H), 0.0, 1.0), 90.0);
-  vec3 col = vec3(0.34, 0.31, 0.28) * (0.82 + 0.4 * diff) + vec3(0.12, 0.11, 0.09) * max(n.y, 0.0);
+  vec3 col = vec3(0.19, 0.175, 0.16) * (0.82 + 0.35 * diff) + vec3(0.07, 0.065, 0.055) * max(n.y, 0.0);
   float a = 0.72 + 0.26 * fres;
-  col += uCream * (fres * 0.72 + spec * 0.95);
+  col += uCream * (fres * 0.38 + spec * 0.42);
   if (vLN.y > 0.5) {
     vec2 p = vL.xz + 0.5;
     float inside = band(0.07, 0.93, p.x) * band(0.1, 0.9, p.y);
@@ -368,7 +368,7 @@ void main(){
   vec3 c = texture(uScene, vUv).rgb;
   if (any(isnan(c)) || any(isinf(c))) c = vec3(0.09, 0.078, 0.07);
   c = clamp(c, 0.0, 8.0);
-  c *= 2.35;
+  c *= 1.55;
   vec3 b = texture(uB1, vUv).rgb * 0.85 + texture(uB2, vUv).rgb * 1.1;
   if (any(isnan(b)) || any(isinf(b))) b = vec3(0.0);
   c += b * uBloom;
@@ -1346,7 +1346,7 @@ void main(){
       bindTex(0, post.scene.tex, u.uScene);
       bindTex(1, post.h1.tex, u.uB1);
       bindTex(2, post.q1.tex, u.uB2);
-      gl.uniform1f(u.uBloom, 1.85 + st.find * 0.45 + st.carry * 0.12);
+      gl.uniform1f(u.uBloom, 1.05 + st.find * 0.28 + st.carry * 0.08);
       gl.uniform2f(u.uRes, W, H);
       gl.uniform2f(u.uCenter, isSmall() ? 0.5 : 0.5 + st.dx * 0.5, 0.48);
       gl.uniform1f(u.uTime, time);
